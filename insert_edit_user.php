@@ -2,6 +2,7 @@
 require "connect_db.php";
 
 $email1 = $_GET['email'];
+$password = sha1($pass);
 
 $sql1 = "UPDATE user SET name='$name',
 password='$password',

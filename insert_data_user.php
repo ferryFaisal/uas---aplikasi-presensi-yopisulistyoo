@@ -2,17 +2,19 @@
 require "connect_db.php";
 session_start();
 
-$pass = sha1($pass);
-$Nemail = $_POST['email'];
-$sql1 = "UPDATE user SET name ='$name', password='$pass', role='$role', date_modified = curdate() WHERE email='$Nemail'";
+$password = sha1($password);
+$dc = date("Y-m-d");
+$dm = date("Y-m-d");
+// $Nemail = $_POST['email'];
+$sql = "INSERT INTO user (email, name, password, role, date_created, date_modified, photo)
+        VALUES ('$email', '$name', '$password', '$role', '$dc', '$dm', '$image')";
+// $sql1 = "UPDATE user SET name ='$name', password='$pass', role='$role', date_modified = curdate() WHERE email='$Nemail'";
 
-if (mysqli_query($conn, $sql1)) {
-    if (($_SESSION['role']) == 'Admin') {
-        header('location: table_user.php');
-        ob_end_flush();
-    }
+if (mysqli_query($conn, $sql)) {
+    echo "Success";
 } else {
-    echo "Error: " . $sql1 . "<br>" . $conn->error;
+    echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
 mysqli_close($conn);
+header('Location: login.php');

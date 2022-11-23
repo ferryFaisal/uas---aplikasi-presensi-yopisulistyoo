@@ -175,7 +175,7 @@ if ($result->num_rows > 0) {
                                                 <td><?= $row["nim"] ?></td>
                                                 <td><?= $row["nama"] ?></td>
                                                 <td><?= $row["kelas"] ?></td>
-                                                <td style="text-align: center"><a href='edit_mahasiswa.php'><i class="fa-solid fa-pen-to-square"></i></a> |
+                                                <td style="text-align: center"><a href='edit_mahasiswa.php?nim=<?= $row['nim'] ?>'><i class="fa-solid fa-pen-to-square"></i></a> |
                                                     <a onclick="return confirm ('Want to Delete ?') " href='delete_mahasiswa.php?nim=<?= $row['nim'] ?>'><i class="fa-solid fa-trash"></i></a>
                                                 </td>
                                             </tr>

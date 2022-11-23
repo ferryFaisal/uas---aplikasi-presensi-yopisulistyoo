@@ -170,7 +170,7 @@ if ($result->num_rows > 0) { ?>
                                                 <td><?= $row["nim"] ?></td>
                                                 <td><?= $row["nama"] ?></td>
                                                 <td><?= $row["status_presensi"] ?></td>
-                                                <td style="text-align: center"><a href='edit_presensi.php'><i class="fa-solid fa-pen-to-square"></i></a> |
+                                                <td style="text-align: center"><a href='edit_presensi.php?id=<?= $row['id'] ?>'><i class="fa-solid fa-pen-to-square"></i></a> |
                                                     <a onclick="return confirm ('Want to Delete ?') " href='delete_presensi.php?id=<?= $row['id'] ?>'><i class="fa-solid fa-trash"></i></a>
                                                 </td>
                                             </tr>

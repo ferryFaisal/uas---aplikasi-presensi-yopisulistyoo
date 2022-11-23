@@ -202,7 +202,7 @@ if ($result->num_rows > 0) { ?>
                         <td><?= $row["date_created"] ?></td>
                         <td><?= $row["date_modified"] ?></td>
                         <?php if ($_SESSION['role'] == 'Admin') { ?>
-                          <td style="text-align: center"><a href='edit_user.php'><i class="fa-solid fa-pen-to-square"></i></a> |
+                          <td style="text-align: center"><a href='edit_user.php?email=<?= $row['email'] ?>'><i class="fa-solid fa-pen-to-square"></i></a> |
                             <a onclick="return confirm ('Want to Delete ?') " href='delete_user.php?email=<?= $row['email'] ?>'><i class="fa-solid fa-trash"></i></a>
                           </td>
                         <?php } ?>

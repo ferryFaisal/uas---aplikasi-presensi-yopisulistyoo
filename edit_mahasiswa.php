@@ -9,13 +9,13 @@ $valid_nama = $valid_kelas = "";
 $sql = "SELECT * FROM mahasiswa WHERE nim = '$_GET[nim]'";
 $result =  mysqli_query($conn, $sql);
 $attrAdmin = $attrDosen =  "";
-// if ($result->num_rows > 0) {
-//     while ($row = mysqli_fetch_assoc($result)) {
-//         $nnim = $row['nim'];
-//         $nnama = $row['nama'];
-//         $nkelas = $row['kelas'];
-//     }
-// }
+if ($result->num_rows > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $nim = $row['nim'];
+        $nama = $row['nama'];
+        $kelas = $row['kelas'];
+    }
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["nama"])) {
@@ -131,7 +131,7 @@ function test_input($data)
 
     <?php
     if ($valid_nama && $valid_kelas == true) {
-        include 'updatemahasiswa_action.php';
+        include 'insert_edit_mahasiswa.php';
     }
 
     mysqli_close($conn);

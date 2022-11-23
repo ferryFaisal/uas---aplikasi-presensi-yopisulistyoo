@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   require "connect_db.php";
-  $password = $_POST['password'];
+  $password = sha1($_POST['password']);
   $email = $_POST['email'];
   $sql = "SELECT * from user where email = '$email' AND password = '$password'";
   $result =  mysqli_query($conn, $sql);
@@ -35,16 +35,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($row['role'] == 'Admin') {
       $_SESSION['login'] = $row['email'];
       $_SESSION['role'] = "Admin";
-      header('location: index.php');
+      header('location: admin_panel.php');
     }
 
     if ($row['role'] == 'Dosen') {
       $_SESSION['login'] = $row['email'];
       $_SESSION['role'] = "Dosen";
-      header('location: ../index.php');
+      header('location: index.php');
     }
   } else {
-    var_dump($password);
+    // var_dump($password);
     $passwordErr = "*invalid";
   }
   mysqli_close($conn);
@@ -77,7 +77,7 @@ function test_input($data)
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/style-bg.css">
+  <link rel="stylesheet" href="style.css">
 
   <style>
     .error {
@@ -114,7 +114,7 @@ function test_input($data)
             </div>
             <div class="form-group">
               <div class="form-label-group">
-                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password">
+                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" value="<?php echo $password; ?>">
                 <label for="inputPassword">Password</label>
                 <span class="error"><?php echo $passwordErr; ?></span>
               </div>

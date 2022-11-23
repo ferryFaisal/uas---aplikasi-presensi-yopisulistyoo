@@ -10,7 +10,7 @@ $sql2 = "UPDATE mahasiswa SET nama = '$nama', kelas ='$kelas'
 if ($conn->query($sql2) == TRUE) {
     echo "<br>";
     // echo "New Record created successfully";
-    header('Location: table_mhs.php');
+    header('Location: table_mahasiswa.php');
 } else {
     echo "Error: " . $sql2 . "<br>" . $conn->error;
 }

@@ -22,9 +22,9 @@ if ($result->num_rows > 0) {
                 $attrDosen = "selected";
                 break;
         }
-        $nname = $row['name'];
-        $npass = $row['password'];
-        $nemail = $_GET['email'];
+        $name = $row['name'];
+        $pass = $row['password'];
+        $email = $_GET['email'];
     }
 }
 
@@ -62,6 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $role = test_input($_POST["role"]);
         $valid_role = true;
     }
+    
 }
 
 function test_input($data)
@@ -179,7 +180,7 @@ function test_input($data)
 
     <?php
     if ($valid_name && $valid_password && $valid_role == true) {
-        include 'insert_data_user.php';
+        include 'insert_edit_user.php';
     }
 
     mysqli_close($conn);
